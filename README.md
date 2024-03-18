@@ -1,1 +1,1 @@
-# Student-Crud-Operations-Django-
+# Student-Crud-Operations-Django
