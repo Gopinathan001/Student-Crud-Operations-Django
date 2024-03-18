@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block title %}
+Create Student Details
+{% endblock %}
+
+{% block content %}
+<div class="tbl" id="create">
+        <main class="table" id="customers_table">
+            {% csrf_token %}
+            <section class="table__header">
+                <h1>Student Details</h1>
+                <div class="export__file">
+                    <a href="{% url 'view_section' sec_for_std.id %}"><div class="add_list-btn-back"></div></a>
+                </div>
+            </section>
+            <section class="table__body">
+                <form method="POST" class="sign-in-form">
+                    {% csrf_token %}
+                    <div class="input-field-tile">
+                        <input type="text" name="Student_name" placeholder="Enter Your Name" required autofocus>
+                      </div>
+                  
+                      <div class="input-field-tile">
+                        <input type="date" name="DOB" placeholder="Enter Your Date Of Birth" required autofocus>
+                      </div>
+                  
+                      <div class="input-field-tile">
+                        <input type="text" name="place" placeholder="Enter Your Place" required autofocus>
+                      </div>
+                     
+                      <input type="submit" value="Add" class="btn_log solid" />
+                  </form>
+            </section>
+            <section class="table__header">
+                
+            </section>
+        </main>
+</div>
+{% endblock %}

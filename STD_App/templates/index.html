@@ -1,0 +1,17 @@
+{% include "header.html" %} 
+
+<html>
+  <head>
+    <title>
+        {% block title %} 
+        
+        {% endblock %}
+    </title>
+  </head>
+  <body>
+    {% block content %} 
+
+    {% endblock %}
+    <script src="../static/js/table.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block title %}
+Delete Section
+{% endblock %}
+
+{% block content %}
+<div class="tbl" id="tab">
+    {% load static %}
+    <main class="table" id="customers_table">
+        {% csrf_token %}
+        <section class="table__header">
+            <h1>Detele Section Details</h1>
+            
+        <div class="export__file">
+            <a href="{% url 'view_section' del_section.id %}"><div class="add_list-btn-back"></div></a>
+        </div>
+        </section>
+        <section class="table__body">
+            <form method="post" action="">
+                {% csrf_token %}
+                <p style="font-size: 1.2rem; padding: 20px;">Are you sure you want to delete <strong>"{{ del_section.name }}"</strong>?</p> 
+                <input type="submit" value="Delete" class="btn_log solid" />
+            </form>
+        </section>
+        <section class="table__header">
+        </section>
+    </main>
+</div>
+{% endblock %}

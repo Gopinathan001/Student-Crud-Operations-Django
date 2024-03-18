@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block title %}
+Delete Student
+{% endblock %}
+
+{% block content %}
+<div class="tbl" >
+    {% load static %}
+    <main class="table" id="customers_table">
+        {% csrf_token %}
+        <section class="table__header">
+            <h1>Detele Student Details</h1>
+            
+        <div class="export__file">
+            <a href="{% url 'view_section' section_id %}"><div class="add_list-btn-back"></div></a>
+        </div>
+        </section>
+        <section class="table__body">
+            <form method="post" action="">
+                {% csrf_token %}
+                <p style="font-size: 1.2rem; padding: 20px;">Are you sure you want to delete <strong>Student Name :</strong>"{{ student.name }}", <strong>Student Date Of Birth :</strong>"{{ student.birth_date }}", <strong>Student Place :</strong>"{{ student.place }}"?</p> 
+                <input type="submit" value="Delete" class="btn_log solid" />
+            </form>
+        </section>
+        <section class="table__header">
+        </section>
+    </main>
+</div>
+{% endblock %}

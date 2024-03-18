@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% block title %}
+Student Detail
+{% endblock %}
+
+{% block content %}
+<div class="tbl">
+    <main class="table" id="customers_table">
+        {% csrf_token %}
+        <section class="table__header">
+            <div class="export__file">
+                <a href="{% url 'All_section' %}"><div class="add_list-btn-back"></div></a>
+            </div>
+            <h1>Students Records</h1>
+            <div class="input-group">
+                {% load static %}
+                <input type="search" placeholder="Search Data...">
+                <img src="{% static 'img/search.png' %}" alt="">
+            </div>
+            <div class="export__file">
+                <a href="{% url 'student_data' section.id %}"><div class="add_list-btn"></div></a>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id </th>
+                        <th> Name </th>
+                        <th> Date Of Birth </th>
+                        <th> Place </th>
+                        <th> Update </th>
+                        <th> Delete </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in list_student %}
+                    <tr>
+                        <td class="size-des">{{ forloop.counter }}</td>   
+                        <td class="size-des">{{ student.name }}</td>   
+                        <td class="size-des">{{ student.birth_date }}</td>   
+                        <td class="size-des">{{ student.place }}</td>   
+                        <td><a href="{% url 'update_student' section_id student.id %}"><i class="fa fa-edit todo-edit" aria-hidden="true"></i></a></td>
+                        <td><a href="{% url 'delete_student' section_id student.id %}" ><i class="fa fa-trash todo-trash" aria-hidden="true"></i></a></td>
+                    </tr>
+                    {% endfor %}  
+                </tbody>            
+            </table>
+        </section>
+        <section class="table__header">
+            <div class="up_del">
+                <h1>{{ section.name }}</h1>
+                <a href="{% url 'edit_section' section.id %}"><i class="fa fa-edit todo-edit" aria-hidden="true" style="font-size:24px"></i></a>
+                <a href="{% url 'delete_section' section.id %}"><i class="fa fa-trash todo-trash" style="font-size:24px" aria-hidden="true"></i></a>
+            </div>
+            
+        
+            <div class="export__file">
+                <label for="export-file" class="export__file-btn" title="Export File"></label>
+                <input type="checkbox" id="export-file">
+                <div class="export__file-options">
+                    <label>Export As &nbsp; &#10140;</label>
+                    {% load static %}
+                    <label for="export-file" id="toPDF">PDF <img src="{% static 'img/pdf.png' %}" alt=""></label>
+                    <label for="export-file" id="toJSON">JSON <img src="{% static 'img/json.png' %}" alt=""></label>
+                    <label for="export-file" id="toCSV">CSV <img src="{% static 'img/csv.png' %}" alt=""></label>
+                    <label for="export-file" id="toEXCEL">EXCEL <img src="{% static 'img/excel.png' %}" alt=""></label>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}

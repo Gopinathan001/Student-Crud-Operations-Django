@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% block title %}
+All Section
+{% endblock %}
+
+{% block content %}
+<div class="tbl" id="tab">
+    {% load static %}
+    <main class="table" id="customers_table">
+        {% csrf_token %}
+        <section class="table__header">
+            <div class="export__file">
+                <a href="{% url 'home' %}"><div class="add_list-btn-back"></div></a>
+        </div>
+            <h1>Section Records</h1>
+            
+            <div class="export__file">
+                <a href="{% url 'section' %}"><div class="add_list-btn"></div></a>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id </th>
+                        <th> Section Name </th>
+                        <th> Open </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sec_view in view_section %}
+                    <tr>
+                        <td class="size-des">{{ forloop.counter }}</td>   
+                        <td class="size-des">{{ sec_view.name }}</td> 
+                        <td><a href="{% url 'view_section' sec_view.id %}" ><i class="far fa-folder-open todo-edit" aria-hidden="true"></i></a></td>
+                    </tr>
+                    {% endfor %}  
+                </tbody>            
+            </table>
+        </section>
+        <section class="table__header">
+            <div class="input-group">
+                {% load static %}
+                <input type="search" placeholder="Search Data...">
+                <img src="{% static 'img/search.png' %}" alt="">
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}

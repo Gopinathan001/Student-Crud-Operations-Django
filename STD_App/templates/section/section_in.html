@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% block title %}
+Section
+{% endblock %}
+
+{% block content %}
+<div class="tbl" id="create">
+    <main class="table" id="customers_table">
+        {% csrf_token %}
+        <section class="table__header">
+            <h1>Section</h1>
+            <div class="export__file">
+                <a href="{% url 'All_section' %}"><div class="add_list-btn-back"></div></a>
+            </div>
+        </section>
+        <section class="table__body">
+          <form method="POST" >
+            {% csrf_token %}
+            <div class="input-field-tile">
+              <input type="text" name="section_name" placeholder="Enter The Section Name" required autofocus>
+            </div>
+            
+            <input type="submit" value="Add" class="btn_log solid" />
+        </form>
+        </section>
+        <section class="table__header">
+            
+        </section>
+    </main>
+</div>
+{% endblock %}
